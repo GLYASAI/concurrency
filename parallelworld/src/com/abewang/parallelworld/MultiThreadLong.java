@@ -1,23 +1,25 @@
 package com.abewang.parallelworld;
 
 /**
- * @Author Abe
- * @Date 2018/4/18.
+ * 在32位系统上，long（64位）型数据的读写不是原子性的
+ *
+ * @Author Abe wang
+ * @Date 4/19/2018.
  */
 public class MultiThreadLong {
     public static long t = 0;
 
-    public static class ChangeT implements Runnable {
+    public static class ChangT implements Runnable {
         private long to;
 
-        public ChangeT(long to) {
+        public ChangT(long to) {
             this.to = to;
         }
 
         @Override
         public void run() {
             while (true) {
-                MultiThreadLong.t = to;
+                t = to;
                 Thread.yield();
             }
         }
@@ -27,20 +29,20 @@ public class MultiThreadLong {
         @Override
         public void run() {
             while (true) {
-                long temp = MultiThreadLong.t;
-                if (temp != 111L && temp != -999L && temp != 333L && temp != -444L) {
-                    System.out.println(temp);
+                long tmp = t;
+                if (tmp != 111L && tmp != -999L && tmp != 333L && tmp != -444L) {
+                    System.out.println(tmp);
                 }
                 Thread.yield();
             }
         }
     }
 
-    public static void main(String args[]) {
-        new Thread(new ChangeT(111L)).start();
-        new Thread(new ChangeT(-999L)).start();
-        new Thread(new ChangeT(333L)).start();
-        new Thread(new ChangeT(-444L)).start();
-        new Thread(new ReadT()).start();
+    public static void main(String[] args) {
+        new Thread(new ChangT(111L)).start();
+        new Thread(new ChangT(-999L)).start();
+        new Thread(new ChangT(333L)).start();
+        new Thread(new ChangT(-444L)).start();
+        new Thread(new ReadT());
     }
 }
