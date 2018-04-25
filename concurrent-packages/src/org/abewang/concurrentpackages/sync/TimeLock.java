@@ -1,4 +1,4 @@
-package org.abewang.concurrentpackages;
+package org.abewang.concurrentpackages.sync;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
