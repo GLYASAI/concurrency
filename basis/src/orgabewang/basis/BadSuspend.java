@@ -1,4 +1,4 @@
-package com.abewang.basis;
+package orgabewang.basis;
 
 /**
  * suspend, resume的错误使用

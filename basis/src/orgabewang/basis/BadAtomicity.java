@@ -1,4 +1,4 @@
-package com.abewang.basis;
+package orgabewang.basis;
 
 import java.util.ArrayList;
 import java.util.List;

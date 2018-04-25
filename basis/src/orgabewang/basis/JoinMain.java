@@ -1,4 +1,4 @@
-package com.abewang.basis;
+package orgabewang.basis;
 
 /**
  * join()方法的使用

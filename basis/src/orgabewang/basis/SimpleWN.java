@@ -1,4 +1,4 @@
-package com.abewang.basis;
+package orgabewang.basis;
 
 /**
  * wait, notify
