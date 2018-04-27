@@ -16,9 +16,10 @@ public class TimeLock implements Runnable {
     public void run() {
         try {
             if (lock.tryLock(5, TimeUnit.SECONDS)) {
+                System.out.println(Thread.currentThread().getName() + " get lock successful");
                 Thread.sleep(6000);
             } else {
-                System.out.println("get lock failure");
+                System.out.println(Thread.currentThread().getName() + " get lock failure");
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
