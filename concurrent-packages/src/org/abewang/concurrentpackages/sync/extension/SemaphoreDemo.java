@@ -25,6 +25,7 @@ public class SemaphoreDemo implements Runnable {
             e.printStackTrace();
         } finally {
             semaphore.release();
+            System.out.println("availablePermits=" + semaphore.availablePermits());
         }
     }
 
@@ -34,5 +35,6 @@ public class SemaphoreDemo implements Runnable {
         for (int i = 0; i < 20; i++) {
             pool.submit(demo);
         }
+        pool.shutdown();
     }
 }
