@@ -62,16 +62,16 @@ public class ReadWriteLockDemo {
     public static class ReadLock implements Runnable {
         @Override
         public void run() {
-//            handleRead(readLock);
-            handleRead(lock);
+            handleRead(readLock);
+//            handleRead(lock);
         }
     }
 
     public static class WriteLock implements Runnable {
         @Override
         public void run() {
-//            handleWrite(writeLock, new Random().nextInt());
-            handleWrite(lock, new Random().nextInt());
+            handleWrite(writeLock, new Random().nextInt());
+//            handleWrite(lock, new Random().nextInt());
         }
     }
 

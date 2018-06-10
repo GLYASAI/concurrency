@@ -27,9 +27,7 @@ public class CyclicBarrierDemo {
                 Thread.sleep(new Random().nextInt(10) * 1000);
                 System.out.println(soldier + " : 任务完成");
                 cyclic.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (BrokenBarrierException e) {
+            } catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
             }
         }
@@ -62,7 +60,7 @@ public class CyclicBarrierDemo {
         System.out.println("集合队伍！");
         for (int i = 0; i < N; i++) {
             System.out.println("士兵" + N + "报道");
-            new Thread(new Soldier(cyclic, "士兵" + N)).start();
+            new Thread(new Soldier(cyclic, "士兵" + i)).start();
         }
     }
 }

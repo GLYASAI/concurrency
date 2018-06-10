@@ -19,6 +19,7 @@ public class CountDownLatchDemo implements Runnable {
         try {
             Thread.sleep((long) (Math.random() * 3000));
             System.out.println("check complete");
+            System.out.println(end.getCount());
             end.countDown();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -30,7 +31,7 @@ public class CountDownLatchDemo implements Runnable {
         for (int i = 0; i < 10; i++) {
             exec.submit(demo);
         }
-        end.await();
+        end.await();  // 等待count值为0才继续执行
         System.out.println("Fire...");
         exec.shutdown();
     }
