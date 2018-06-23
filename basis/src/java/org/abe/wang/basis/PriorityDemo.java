@@ -1,4 +1,4 @@
-package orgabewang.basis;
+package org.abe.wang.basis;
 
 /**
  * 线程优先级

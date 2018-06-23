@@ -1,4 +1,4 @@
-package orgabewang.basis;
+package org.abe.wang.basis;
 
 /**
  * 守护线程

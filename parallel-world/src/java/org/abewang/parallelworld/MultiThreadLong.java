@@ -1,4 +1,4 @@
-package com.abewang.parallelworld;
+package org.abewang.parallelworld;
 
 /**
  * 在32位系统上，long（64位）型数据的读写不是原子性的

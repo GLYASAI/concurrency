@@ -1,4 +1,4 @@
-package orgabewang.basis;
+package org.abe.wang.basis;
 
 /**
  * volatile保证数据的可见性

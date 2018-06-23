@@ -1,18 +1,16 @@
-package orgabewang.basis;
+package org.abe.wang.basis;
 
 /**
  * @Author Abe
  * @Date 2018/4/19.
  */
-public class AccountingSync implements Runnable {
-    private static AccountingSync instance = new AccountingSync();
-    private static int i;
+public class AccountingVol implements Runnable {
+    private static AccountingVol instance = new AccountingVol();
+    private static volatile int i;
 
     public void run() {
         for (int j = 0; j < 10000000; j++) {
-            synchronized (instance) {
-                i++;
-            }
+            i++;
         }
     }
 
