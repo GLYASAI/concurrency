@@ -59,7 +59,7 @@ public class CyclicBarrierDemo {
 
         System.out.println("集合队伍！");
         for (int i = 0; i < N; i++) {
-            System.out.println("士兵" + N + "报道");
+            System.out.println("士兵" + i + "报道");
             new Thread(new Soldier(cyclic, "士兵" + i)).start();
         }
     }
