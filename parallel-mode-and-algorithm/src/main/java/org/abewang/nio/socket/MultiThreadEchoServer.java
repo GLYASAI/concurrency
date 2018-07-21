@@ -25,14 +25,15 @@ public class MultiThreadEchoServer {
 
         @Override
         public void run() {
-            long b = System.nanoTime();
             try (BufferedReader is = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                  PrintWriter os = new PrintWriter(socket.getOutputStream(), true)) {
                 String line;
+                long b = System.currentTimeMillis();
                 while ((line = is.readLine()) != null) {
+                    System.out.println(line);
                     os.println(line);
                 }
-                long e = System.nanoTime();
+                long e = System.currentTimeMillis();
                 System.out.println("spend: " + (e - b) + "ms");
             } catch (IOException e) {
                 e.printStackTrace();
