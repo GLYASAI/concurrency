@@ -1,6 +1,7 @@
-package org.abewang.nio.socket;
+package org.abewang.io.socket;
 
 import java.io.*;
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
@@ -21,7 +22,7 @@ public class HeavySocketClient {
             PrintWriter writer = null;
             BufferedReader reader = null;
             try (Socket client = new Socket()) {
-                client.connect(new InetSocketAddress("localhost", 8000));
+                client.connect(new InetSocketAddress(InetAddress.getLocalHost(), 8000));
                 writer = new PrintWriter(client.getOutputStream(), true);
                 writer.print("H");
                 LockSupport.parkNanos(sleepTime);

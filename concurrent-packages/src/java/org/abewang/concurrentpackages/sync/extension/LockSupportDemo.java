@@ -21,17 +21,17 @@ public class LockSupportDemo {
         @Override
         public void run() {
             synchronized (u) {
-                System.out.println("in " + Thread.currentThread().getName());
                 LockSupport.park();
+                System.out.println("in " + Thread.currentThread().getName());
             }
         }
     }
 
     public static void main(String[] args) throws InterruptedException {
+        LockSupport.unpark(t1);
         t1.start();
         Thread.sleep(100);
         t2.start();
-        LockSupport.unpark(t1);
         LockSupport.unpark(t2);
         t1.join();
         t2.join();

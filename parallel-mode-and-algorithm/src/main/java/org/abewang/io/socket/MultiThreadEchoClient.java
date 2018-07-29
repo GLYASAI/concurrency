@@ -1,4 +1,4 @@
-package org.abewang.nio.socket;
+package org.abewang.io.socket;
 
 import java.io.BufferedReader;
 import java.io.IOException;
