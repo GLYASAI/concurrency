@@ -63,14 +63,14 @@ public class EchoServer {
         ServerSocketChannel server = (ServerSocketChannel) sk.channel();
         SocketChannel clientChannel;
         try {
-            clientChannel = server.accept();
+            clientChannel = server.accept();  // 这里不能用SocketChannel, 因为SocketChannel没有accept方法
             clientChannel.configureBlocking(false);
 
             // Register this channel for reading.
             SelectionKey clientKey = clientChannel.register(selector, SelectionKey.OP_READ);
-            // Allocate an EchoClient instance and attach it to this selection key.
-            EchoClient echoClient = new EchoClient();
-            clientKey.attach(echoClient);
+            // Allocate an EchoClientData instance and attach it to this selection key.
+            EchoClientData echoClientData = new EchoClientData();
+            clientKey.attach(echoClientData);
 
             InetAddress clientAddress = clientChannel.socket().getInetAddress();
             System.out.println("Accepted connection from " + clientAddress.getHostAddress() + ".");
@@ -80,7 +80,7 @@ public class EchoServer {
     }
 
     public void doRead(SelectionKey sk) {
-        SocketChannel channel = (SocketChannel) sk.channel();  // 为什么不是ServerSocketChannel
+        SocketChannel channel = (SocketChannel) sk.channel();
         ByteBuffer bb = ByteBuffer.allocate(8196);
         int len;
 
@@ -105,8 +105,8 @@ public class EchoServer {
 
     public void doWrite(SelectionKey sk) {
         SocketChannel channel = (SocketChannel) sk.channel();
-        EchoClient echoClient = (EchoClient) sk.attachment();
-        LinkedList<ByteBuffer> outQ = echoClient.getOutputQueue();
+        EchoClientData echoClientData = (EchoClientData) sk.attachment();
+        LinkedList<ByteBuffer> outQ = echoClientData.getOutputQueue();
 
         ByteBuffer bb = outQ.getLast();
         try {
@@ -142,8 +142,8 @@ public class EchoServer {
 
         @Override
         public void run() {
-            EchoClient echoClient = (EchoClient) sk.attachment();
-            echoClient.enqueue(bb);
+            EchoClientData echoClientData = (EchoClientData) sk.attachment();
+            echoClientData.enqueue(bb);
             // 重新注册感兴趣的消息
             sk.interestOps(SelectionKey.OP_READ | SelectionKey.OP_WRITE);
             selector.wakeup();
