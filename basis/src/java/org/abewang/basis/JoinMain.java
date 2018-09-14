@@ -1,4 +1,4 @@
-package org.abe.wang.basis;
+package org.abewang.basis;
 
 /**
  * join()方法的使用

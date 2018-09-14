@@ -4,23 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.abewang</groupId>
-    <artifactId>parallel-mode-and-algorithm</artifactId>
+    <artifactId>concurrency</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>parallel-mode-and-algorithm</name>
+    <name>concurrency</name>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
     </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.lmax</groupId>
-            <artifactId>disruptor</artifactId>
-            <version>3.4.2</version>
-        </dependency>
-    </dependencies>
 
     <build>
         <plugins>

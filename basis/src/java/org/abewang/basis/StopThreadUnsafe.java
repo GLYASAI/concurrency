@@ -1,4 +1,4 @@
-package org.abe.wang.basis;
+package org.abewang.basis;
 
 /**
  * 暴力的Thread.stop()

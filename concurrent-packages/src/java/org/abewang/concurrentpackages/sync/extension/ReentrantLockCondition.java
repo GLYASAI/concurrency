@@ -19,6 +19,7 @@ public class ReentrantLockCondition implements Runnable {
             lock.lock();
             try {
                 condition.await();  // 需要线程持有相关的重入锁
+                System.out.println("test");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -32,8 +33,8 @@ public class ReentrantLockCondition implements Runnable {
         Thread t = new Thread(new ReentrantLockCondition());
         t.start();
         Thread.sleep(1000);
-        lock.lock();
+//        lock.lock();
         condition.signal();  // 需要线程持有相关的重入锁
-        lock.unlock();  // 释放锁，谦让给被唤醒的线程
+//        lock.unlock();  // 释放锁，谦让给被唤醒的线程
     }
 }
